@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex布局，margin-right失效</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        width: 400px;
+        height: 400px;
+        overflow-x: auto;
+        background-color: black;
+      }
+      .item {
+        flex: 0 0 100px;
+        margin: 0 10px;
+        text-align: center;
+        background-color: aquamarine;
+      }
+      .container::after {
+        content: '';
+        height: 1px;
+        padding: 0 5px;
+      }
+      .item:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 问题 -->
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </body>
+</html>
