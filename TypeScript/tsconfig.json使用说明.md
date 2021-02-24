@@ -1,3 +1,14 @@
+- [tsconfig.json 使用说明](#tsconfigjson-使用说明)
+  - [作用](#作用)
+  - [使用 tsconfig.json](#使用-tsconfigjson)
+  - [常用配置](#常用配置)
+  - [常用编译选项](#常用编译选项)
+  - [发布声明文件](#发布声明文件)
+    - [方案](#方案)
+    - [将声明文件和源码放在一起](#将声明文件和源码放在一起)
+    - [将声明文件发布到 @types 下](#将声明文件发布到-types-下)
+  - [typeRoots 和 types 的区别](#typeroots-和-types-的区别)
+
 # tsconfig.json 使用说明
 
 ## 作用
