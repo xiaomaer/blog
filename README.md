@@ -19,7 +19,8 @@
 
 - [创建 ref 的几种方式](./React/创建ref的几种方式.md)
 - [【todo】react-use 库学习总结](./React/react-use库学习总结.md)
-
+- [【todo】底层原理学习：diff策略](./React/底层原理学习：diff策略.md)
+- [【todo】底层原理学习：React Fiber框架](./React/底层原理学习：React Fiber框架.md)
 ## 工程化
 
 - [【todo】lerna monorepo 实现组件共享](./工程化/lerna实现组件共享-monorepo.md)
@@ -27,3 +28,6 @@
 ## 移动端
 
 - [h5 问题总结](./移动端/h5问题总结.md)
+
+##  Eslint
+- [【todo】eslint-plugin-prettier vs eslint-config-prettier](./Eslint/eslint-plugin-prettier%20vs%20eslint-config-prettier.md)
