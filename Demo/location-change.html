@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>如何监听页面URL变化</title>
+  </head>
+  <body>
+    <h3>测试history API跳转</h3>
+    <button type="button" id="btn1">pushstate</button>
+    <button type="button" id="btn2">replacestate</button>
+    <button type="button" id="btn3">go</button>
+    <button type="button" id="btn4">forward</button>
+    <button type="button" id="btn5">back</button>
+    <h3>测试hash跳转</h3>
+    <button type="button" id="btn6">改变hash</button>
+    <script>
+      const getFunc = function (type) {
+        var historyFunc = history[type];
+        return function () {
+          const func = historyFunc.apply(this, arguments);
+          const e = new Event(type);
+          e.arguments = arguments;
+          window.dispatchEvent(e);
+          return func;
+        };
+      };
+      // 重新定义pushstate和replacestate方法
+      history.pushState = getFunc('pushState');
+      history.replaceState = getFunc('replaceState');
+
+      function handlePushState() {
+        window.history.pushState({ page: 1 }, 'title 1', '?page=1');
+      }
+
+      function handleReplachState() {
+        window.history.replaceState({ page: 3 }, 'title 3', '?page=3');
+      }
+
+      function handleGo() {
+        window.history.go(-5);
+      }
+
+      function handleForward() {
+        window.history.forward();
+      }
+
+      function handleBack() {
+        window.history.back();
+      }
+      function handleHash() {
+        window.location.hash = '#test';
+      }
+
+      const handleHashChange = () => {
+        console.log('hash change');
+      };
+      const handlePopState = () => {
+        console.log('pop state监听');
+      };
+      const handleStateChange = () => {
+        console.log('state change');
+      };
+      document
+        .getElementById('btn1')
+        .addEventListener('click', handlePushState, false);
+      document
+        .getElementById('btn2')
+        .addEventListener('click', handleReplachState, false);
+      document
+        .getElementById('btn3')
+        .addEventListener('click', handleGo, false);
+      document
+        .getElementById('btn4')
+        .addEventListener('click', handleForward, false);
+      document
+        .getElementById('btn5')
+        .addEventListener('click', handleBack, false);
+      document
+        .getElementById('btn6')
+        .addEventListener('click', handleHash, false);
+
+      window.addEventListener('hashchange', handleHashChange, false);
+      window.addEventListener('popstate', handlePopState, false);
+      window.addEventListener('pushState', handleStateChange, false);
+      window.addEventListener('replaceState', handleStateChange, false);
+    </script>
+  </body>
+</html>
