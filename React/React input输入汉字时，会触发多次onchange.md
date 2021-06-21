@@ -28,6 +28,7 @@ export const Input = ({ value, onChange }) => {
     const onchangeRef = useRef(false);
 
     useEffect(() => {
+        // 受控使用时，要这样赋值
         if (inputRef.current) {
             inputRef.current.value = value || '';
         }
@@ -63,7 +64,9 @@ export const Input = ({ value, onChange }) => {
     );
 
     return (
-        <input
+        <input 
+            // 这样赋值输入框将会不能输入内容
+            // value={value}
             onChange={handleChange}
             ref={inputRef}
             onCompositionStart={handleComposition}
