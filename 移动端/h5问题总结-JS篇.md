@@ -2,6 +2,8 @@
 - [h5 问题总结-JavaScript 篇](#h5-问题总结-javascript-篇)
   - [左右滑动时，禁止上下滚动](#左右滑动时禁止上下滚动)
   - [禁止滚动穿透](#禁止滚动穿透)
+      - [问题描述](#问题描述)
+      - [方案](#方案)
   - [禁止点击穿透](#禁止点击穿透)
   - [日期解析](#日期解析)
   - [简化回到顶部](#简化回到顶部)
@@ -71,40 +73,57 @@ const handleTouchMove = useCallback((e: TouchEvent) => {
 
 ## 禁止滚动穿透
 
-- 问题描述：页面内容可滚动且有弹窗时，当在弹窗上滚动时，会导致页面内容也跟着滚动
-- 方案 1：当打开弹窗时，获取 scrollTop，并给 body 设置`position:fixed;`和动态 top 为`-${scrollTop}px`；当关闭弹窗时，移除设置的样式
+#### 问题描述
+页面内容可滚动且有弹窗时，当在弹窗上滚动时，会导致页面内容也跟着滚动
+
+#### 方案
+- 方案 1：当打开弹窗时，设置body为`overflow:hidden;width:calc(100vw-0px);`，当关闭弹层时，移除样式（一定要通过内联样式上设置）
+  ```
+  // 解决弹层内容滚动穿透和滚动跳动问题（显示和隐藏输入URL地址栏）
+    const body = document.body;
+    if (visible) {
+      // ! 必须是内联样式，如果使用添加类设置样式，会导致滚动位置丢失
+      body.style.cssText += `width: calc(100vw - 0px); overflow: hidden;`;
+    } else {
+      body.style.width = '';
+      body.style.overflow = '';
+    }
+  ```
+- 方案 2：当打开弹窗时，获取 scrollTop，并给 body 设置`position:fixed;`和动态 top 为`-${scrollTop}px`；当关闭弹窗时，移除设置的样式，恢复scrollTop
+  - 问题：关闭弹层时，页面会抖动（页面dom节点很多时）
+  - 相关代码
+  ```
+  body.fixed {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+  }
+
+  const clsName="fixed";
+  const body = document.body;
+  const openBtn = document.getElementById("open-btn"); // 打开弹窗
+  const closeBtn = document.getElementById("close-btn"); // 关闭弹窗
+  openBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      body.classList.add(clsName);
+      body.style.top = `-${scrollTop}px`;
+  });
+  closeBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      body.classList.remove(clsName);
+      body.scrollTop = document.documentElement.scrollTop = -parseInt(body.style.top);
+      body.style.top = '';
+  });
+
+
 
 ```
-body.fixed {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
 
-const clsName="fixed";
-const body = document.body;
-const openBtn = document.getElementById("open-btn"); // 打开弹窗
-const closeBtn = document.getElementById("close-btn"); // 关闭弹窗
-openBtn.addEventListener("click", e => {
-    e.stopPropagation();
-    const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-    body.classList.add(clsName);
-    body.style.top = `-${scrollTop}px`;
-});
-closeBtn.addEventListener("click", e => {
-    e.stopPropagation();
-    body.classList.remove(clsName);
-    body.scrollTop = document.documentElement.scrollTop = -parseInt(body.style.top);
-    body.style.top = '';
-});
+- 方案 3:阻止 touchmove 事件默认行为（其默认行为为滚动事件）
 
-
-```
-
-- 方案 2:阻止 touchmove 事件默认行为【待验证】
-
-- 结果：除了弹窗内容能点击或滚动，其他内容都不能点击或滚动
+  - 结果：除了弹窗内容能点击或滚动，其他内容都不能点击或滚动
 
 ## 禁止点击穿透
 
