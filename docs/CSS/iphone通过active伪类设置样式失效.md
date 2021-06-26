@@ -1,4 +1,4 @@
-# iphone设置css  :active伪类失效
+# iphone通过active伪类设置样式失效
 
 ## 问题
 最近开发组件，需要处理组件点击态样式，该样式通过CSS的`:active`伪类设置，但是在iPhone部分浏览器却没有效果。代码如下：
