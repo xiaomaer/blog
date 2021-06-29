@@ -3,6 +3,7 @@
   - [如何设置 div 背景色一半为蓝色一半为白色](CSS/如何设置div背景色一半为蓝色一半为白色.md)
   - [iphone通过active伪类设置样式失效](CSS/iphone通过active伪类设置样式失效.md)
   - [textarea高度根据内容自适应](CSS/textarea高度根据内容自适应.md)
+  - [flex为1时内容超出宽度不折行或者不出现省略号](CSS/flex为1时内容超出宽度不折行或者不出现省略号.md)
 
 - JAVASCRIPT
   - [获取当前网速](JS/获取当前网速.md)
