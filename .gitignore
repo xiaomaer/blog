@@ -38,3 +38,4 @@ cjs
 dist
 
 .caches
+.DS_Store

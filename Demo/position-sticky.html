@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用position:sticky实现吸顶效果</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    
+      .parentcontainer {
+        /* 如果sticky元素的父级（或祖先级）元素设置了overflow:visible以外的属性值，没有sticky效果（因为改变了滚动容器） */
+        /* overflow: auto; */
+      }
+      .container {
+        /* 如果sticky元素的父级（或祖先级）元素设置了overflow:visible以外的属性值，没有sticky效果（因为改变了滚动容器） */
+        overflow: auto;
+      }
+      .header {
+        /*同一父容器中的多个sticky元素，如果定位值相等，则会重叠。
+        如果属于不同父元素，且这些父元素正好紧密相连，则会挤开原来的元素，形成依次占位的效果。
+        去掉/加上 <section>标签可以看看两者的差别 */
+        position: sticky;
+        top: 0px;
+        padding: 10px 0;
+        text-align: center;
+        background-color: red;
+      }
+      .content {
+        padding: 5px;
+        height: 350px;
+        background: gainsboro;
+      }
+      body{
+        height: 1000px;
+      }
+      .testheight {
+        height: 100px;
+        background-color: gainsboro;
+      }
+      .testcontent {
+        position: sticky;
+        top: 0px;
+        background: lightskyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 50px"></div>
+    <!-- 如果sticky元素的高度跟其父元素的高度一致，没有sticky效果 -->
+    <div class="testheight">
+      <!-- 去掉testheight类，可以看看与父元素高度不同的效果 -->
+      <div class="testheight testcontent">内容</div>
+    </div>
+    <div class="parentcontainer">
+      <div class="container">
+        <section>
+          <div class="header">header1</div>
+          <div class="content">
+            content1我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+          </div>
+        </section>
+        <section>
+          <div class="header">header2</div>
+          <div class="content">
+            content2我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+          </div>
+        </section>
+        <section>
+          <div class="header">header3</div>
+          <div class="content">
+            content3我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+          </div>
+        </section>
+        <section>
+          <div class="header">header4</div>
+          <div class="content">
+            content4我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+          </div>
+        </section>
+        <section>
+          <div class="header">header5</div>
+          <div class="content">
+            content5我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- 
+  sticky失效的场景：
+  1、如果sticky元素的父级（或祖先级）元素设置了overflow:visible以外的属性值（因为改变了滚动容器）
+  2、如果sticky元素的高度跟其父元素的高度一致
+ -->
