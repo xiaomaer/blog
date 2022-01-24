@@ -5,7 +5,70 @@
 textarea可以通过rows或height设置高度，当内容超过rows或高度时，会出现滚动条，那么怎么实现高度根据内容自适应呢？
 
 ## 解决方案
-* 方案1：css+js
+
+### 方案1：纯css
+* 实现原理：给textarea包裹一层父容器，并在该容器中放入一个隐藏的div（visibility:hidden），并将textarea输入内容实时显示在div中，这样div把父容器高度撑开了。textarea绝对定位，height设置为100%，textarea高度即会跟着内容而变化。（div和textarea字体、边距等样式要保持一致，不然高度会不同步）
+* 实现方案：
+   ```
+    const [value, setValue] = useState('');
+    const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setValue(e.target.value);
+      onChange && onChange(e.target.value, e);
+    },
+    [onChange],
+    );
+    // ...
+    <div className="container">
+        <div className="simulate">{value}</div>
+        <textarea
+          ref={textareaRef}
+          disabled={disabled}
+          className="content"
+          onChange={handleChange}
+          value={value}></textarea>
+      </div>
+    // ...  
+    .container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      min-height: 131px;
+      max-height: 194px;
+    }
+    .simulate,
+    .content {
+      width: 100%;
+      padding: 0;
+      color: #333;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      word-break: break-word;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      font-size:18px;
+      line-height:22px;
+    }
+    .simulate {
+      position: relative;
+      visibility: hidden;
+    }
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      resize: none;
+      caret-color: green;
+    }
+
+   ```
+### 方案2：css+js
   ```
     <textarea oninput="auto_grow(this)"></textarea>
 
@@ -22,7 +85,7 @@ textarea可以通过rows或height设置高度，当内容超过rows或高度时�
         }
 
   ```
-* 方案2: 纯css
+### 方案3: 纯css
   ```
   <label class="input-sizer stacked">
     <span>Text: </span>
@@ -103,9 +166,10 @@ textarea可以通过rows或height设置高度，当内容超过rows或高度时�
         }
     }
   ```
-* 通过给元素设置contenteditable模拟
+### 方案4:通过给元素设置contenteditable模拟
+
   ```
-  <span 
+    <span 
   class="input" 
   role="textbox" 
   contenteditable>
