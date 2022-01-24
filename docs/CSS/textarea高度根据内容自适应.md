@@ -8,7 +8,7 @@ textarea可以通过rows或height设置高度，当内容超过rows或高度时�
 
 ### 方案1：纯css
 * 实现原理：给textarea包裹一层父容器，并在该容器中放入一个隐藏的div（visibility:hidden），并将textarea输入内容实时显示在div中，这样div把父容器高度撑开了。textarea绝对定位，height设置为100%，textarea高度即会跟着内容而变化。（div和textarea字体、边距等样式要保持一致，不然高度会不同步）
-* 实现方案：
+* 实现代码：
    ```
     const [value, setValue] = useState('');
     const handleChange = useCallback(
@@ -69,6 +69,9 @@ textarea可以通过rows或height设置高度，当内容超过rows或高度时�
 
    ```
 ### 方案2：css+js
+* 实现原理：通过js检测文本的高度，然后动态设置文本框的高度。
+* 实现思路：当出现滚动条的时候，文本的实际高度就是**scrollHeight**，我们只需要设置文本框的高度为内容的**scrollHeight**即可。
+* 实现代码：
   ```
     <textarea oninput="auto_grow(this)"></textarea>
 

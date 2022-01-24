@@ -21,6 +21,7 @@
   - [滚动元素，在顶部下拉时，背景色断层问题](#滚动元素在顶部下拉时背景色断层问题)
   - [禁止页面上下拉动，露出背景](#禁止页面上下拉动露出背景)
   - [CSS改变input光标颜色](#css改变input光标颜色)
+  - [ios click事件偶发失效](#ios-click事件偶发失效)
 
 # h5 问题总结-CSS篇
 
@@ -268,3 +269,36 @@ input{
     caret-color:red;
 }
 ```
+## ios click事件偶发失效
+* 场景：通过增加绝对定位的div，实现按钮点按效果，代码如下：
+    ```
+    <button class="mobile-button" onclick="handleclick">
+        <!-- 实现点按效果的标签 --> 
+        <div class="mobile-button__highlight-overlay"></div>
+        <!-- icon -->
+        <div class="mobile-button__icon-container">icon</div>
+        <!-- text -->
+        <div class="mobile-button__children-container">text</div>
+    </button>
+    .mobile-button {
+        // ...
+        position:relative;
+    }
+    .mobile-button__highlight-overlay {
+        position: absolute;
+        z-index: 1;
+        display: none;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.05);
+        border-radius: 5px;
+    }
+    ```
+* 操作：在ios上点击按钮，偶尔不触发click逻辑
+* 问题：`.mobile-button__highlight-overlay`那层div阻碍了事件执行
+* 解决：给`.mobile-button__highlight-overlay`增加以下属性，禁止该元素的鼠标事件
+  ```
+  .mobile-button__highlight-overlay {
+    pointer-events: none !important;
+    }
+  ```
