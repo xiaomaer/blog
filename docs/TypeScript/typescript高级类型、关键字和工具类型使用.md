@@ -61,7 +61,7 @@
         sex: 'female',
         age: 20
     }
-    
+
     // error：
     // Type '{ id: string; name: string; sex: string; }' is not assignable to type 'IntersectionType'.
     //   Property 'age' is missing in type '{ id: string; name: string; sex: string; }' but required in type 'B'.
@@ -79,14 +79,14 @@
 * 使用
 
   ```
-    interface A{
-      id:string;
-      name:string;
+      interface A {
+        id: string;
+        name: string;
       }
 
-      interface B{
-          sex:string;
-          age:number;
+      interface B {
+          sex: string;
+          age: number;
       }
 
       // 等价于
@@ -101,37 +101,36 @@
       //     sex:string;
       //     age:number;
       // }
-      type UnionType = A|B;
+      type UnionType = A | B;
 
+      let result: UnionType;
 
-      let result:UnionType;
-
-      result={
-          id:'1',
-          name:'xiaoma',
+      result = {
+          id: '1',
+          name: 'xiaoma',
       }
 
-      result={
-          sex:'female',
-          age:20
+      result = {
+          sex: 'female',
+          age: 20
       }
 
-      result={
-          id:'1',
-          name:'xiaoma',
-          sex:'female',
-          age:20
+      result = {
+          id: '1',
+          name: 'xiaoma',
+          sex: 'female',
+          age: 20
       }
 
       // error :
       // Type '{ id: string; name: string; sex: string; age: number; other: number; }' is not assignable to type 'UnionType'.
       //   Object literal may only specify known properties, and 'other' does not exist in type 'UnionType'.
-      result={
-          id:'1',
-          name:'xiaoma',
-          sex:'female',
-          age:20,
-          other:111
+      result = {
+          id: '1',
+          name: 'xiaoma',
+          sex: 'female',
+          age: 20,
+          other: 111
       }
 
   ```
@@ -173,10 +172,13 @@
 
     // true
     const isNumber = typeof result1 === 'number';
+
     // type Props1=1
     type Props1 = typeof result1;
+
     // type Props2=()=>{id:string,name:string}
     type Props2 = typeof result2;
+
     // type Props3={
     //     id:string;
     //     name:string;
@@ -216,6 +218,7 @@
 
     // 输出xiaoma
     getInfo(new A());
+
     // 输出female
     getInfo(new B());
 
@@ -324,7 +327,6 @@
     type Param = ParamType<FunctionType>;   // type Param = number
     type OtherParam = ParamType<symbol>;   // type Param = symbol
 
-
     // 判断 T 是否能赋值给 (param: any) => infer U，并且将返回值类型推断为泛型 U，如果可以赋值，则返回返回值类型 U，否则返回传入的类型
     type ReturnValueType<T> = T extends (param: any) => infer U ? U : T;
 
@@ -367,6 +369,7 @@
         age: number
         sex: 'male' | 'female';
     }
+
     // 等价于
     // type PartialUser={
     //     name?: string
@@ -393,6 +396,7 @@
     age?: number
     sex?: 'male' | 'female';
     }
+
     // 等价于
     // type RequiredUser={
     //     name: string
@@ -499,9 +503,7 @@
 * 实现：
   ```
   type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-  
-  or
-
+  // or
   type Omit<T, K> = {
     [P in Exclude<keyof T, K>]: T[P];
   };
@@ -543,7 +545,6 @@
       address?:string;
   }
 
-
   //等价于 type ExtractUser= 'id'|'name'
   type ExtractUser = Extract<keyof UserA,keyof UserB>
 
@@ -576,13 +577,11 @@
       address?:string;
   }
 
-
   // 等价于 type ExcludeUser= 'age'|'sex'
   type ExcludeUser = Exclude<keyof UserA,keyof UserB>
 
   // 等价于 type ExcludeProps1= 'b'|'d'
   type ExcludeProps1 = Exclude<"a" | "b" | "c" | "d", "a" | "c" | "f">; 
-
 
   // 等价于 type ExcludeProps2= 'string'|'number'
   type ExcludeProps2 = Exclude<string | number | (() => void), Function>;  
@@ -611,7 +610,6 @@
       name: string;
       address?: string;
   }
-
 
   // 等价于 
   // type RecordUser= {
