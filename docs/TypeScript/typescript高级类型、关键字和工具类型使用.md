@@ -35,14 +35,14 @@
 * 语法：`A&B`
 * 用法:
   ```
-  interface A{
-    id:string;
-    name:string;
+    interface A {
+      id: string;
+      name: string;
     }
 
-    interface B{
-        sex:string;
-        age:number;
+    interface B {
+        sex: string;
+        age: number;
     }
 
     // 等价于
@@ -55,22 +55,21 @@
     type IntersectionType = A & B;
 
     //缺少任何一个必须属性，编译都会报错 
-    const result:IntersectionType={
-        id:'1',
-        name:'xiaoma',
-        sex:'female',
-        age:20
+    const result: IntersectionType = {
+        id: '1',
+        name: 'xiaoma',
+        sex: 'female',
+        age: 20
     }
-
-
+    
     // error：
     // Type '{ id: string; name: string; sex: string; }' is not assignable to type 'IntersectionType'.
     //   Property 'age' is missing in type '{ id: string; name: string; sex: string; }' but required in type 'B'.
-    const result2:IntersectionType={
-        id:'1',
-        name:'xiaoma',
-        sex:'female',
-    }
+    const result2: IntersectionType = {
+        id: '1',
+        name: 'xiaoma',
+        sex: 'female',
+    }    
 
   ```
 
@@ -80,60 +79,60 @@
 * 使用
 
   ```
-  interface A{
-    id:string;
-    name:string;
-    }
+    interface A{
+      id:string;
+      name:string;
+      }
 
-    interface B{
-        sex:string;
-        age:number;
-    }
+      interface B{
+          sex:string;
+          age:number;
+      }
 
-    // 等价于
-    // type UnionType={
-    //     id:string;
-    //     name:string;
-    //     sex?:string;
-    //     age?:number;
-    // }|{
-    //     id?:string;
-    //     name?:string;
-    //     sex:string;
-    //     age:number;
-    // }
-    type UnionType = A|B;
+      // 等价于
+      // type UnionType={
+      //     id:string;
+      //     name:string;
+      //     sex?:string;
+      //     age?:number;
+      // }|{
+      //     id?:string;
+      //     name?:string;
+      //     sex:string;
+      //     age:number;
+      // }
+      type UnionType = A|B;
 
 
-    let result:UnionType;
+      let result:UnionType;
 
-    result={
-        id:'1',
-        name:'xiaoma',
-    }
+      result={
+          id:'1',
+          name:'xiaoma',
+      }
 
-    result={
-        sex:'female',
-        age:20
-    }
+      result={
+          sex:'female',
+          age:20
+      }
 
-    result={
-        id:'1',
-        name:'xiaoma',
-        sex:'female',
-        age:20
-    }
+      result={
+          id:'1',
+          name:'xiaoma',
+          sex:'female',
+          age:20
+      }
 
-    // error :
-    // Type '{ id: string; name: string; sex: string; age: number; other: number; }' is not assignable to type 'UnionType'.
-    //   Object literal may only specify known properties, and 'other' does not exist in type 'UnionType'.
-    result={
-        id:'1',
-        name:'xiaoma',
-        sex:'female',
-        age:20,
-        other:111
-    }
+      // error :
+      // Type '{ id: string; name: string; sex: string; age: number; other: number; }' is not assignable to type 'UnionType'.
+      //   Object literal may only specify known properties, and 'other' does not exist in type 'UnionType'.
+      result={
+          id:'1',
+          name:'xiaoma',
+          sex:'female',
+          age:20,
+          other:111
+      }
 
   ```
 ## 2、关键字
@@ -142,20 +141,20 @@
 * 语法：`keyof T`
 * 使用：
   ```
-  interface A{
-    id:string;
-    name:string;
-    }
+    interface A{
+      id:string;
+      name:string;
+      }
 
-    // 等价于
-    // type AProps='id'|'name'
-    type AProps=keyof A
+      // 等价于
+      // type AProps='id'|'name'
+      type AProps=keyof A
 
-    let result:AProps;
-    result='id';
-    result='name';
-    // error:Type '"ddd"' is not assignable to type 'keyof A'.
-    result='ddd'
+      let result:AProps;
+      result='id';
+      result='name';
+      // error:Type '"ddd"' is not assignable to type 'keyof A'.
+      result='ddd'
 
   ```
 ### typeof
@@ -739,5 +738,5 @@
     type FunctionType = (name: string, age: number) => boolean
     // 等价于 type FunctionParamsType=[name: string, age: number]
     type FunctionParamsType = Parameters<FunctionType>
-    
+
   ```
