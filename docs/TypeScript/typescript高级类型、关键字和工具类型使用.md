@@ -1,4 +1,4 @@
-- [typescript高级类型、关键字和工具类型讲解](#typescript高级类型关键字和工具类型讲解)
+- [typescript高级类型、关键字和工具类型使用](#typescript高级类型关键字和工具类型使用)
   - [1、高级类型](#1高级类型)
     - [交叉类型（&）](#交叉类型)
     - [联合类型（|）](#联合类型)
@@ -27,7 +27,7 @@
     - [ReturnType<T>](#returntypet)
     - [Parameters<T>](#parameterst)
 
-# typescript高级类型、关键字和工具类型讲解
+# typescript高级类型、关键字和工具类型使用
 ## 1、高级类型
 
 ### 交叉类型（&）
