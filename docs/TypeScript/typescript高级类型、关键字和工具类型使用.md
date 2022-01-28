@@ -71,11 +71,14 @@
         name:'xiaoma',
         sex:'female',
     }
+
   ```
+
 ### 联合类型（|）
 * 定义：可以赋值同一个变量不同的类型
 * 语法：`A|B`
 * 使用
+
   ```
   interface A{
     id:string;
@@ -153,6 +156,7 @@
     result='name';
     // error:Type '"ddd"' is not assignable to type 'keyof A'.
     result='ddd'
+
   ```
 ### typeof
 * 定义：返回数据的类型定义
@@ -215,6 +219,7 @@
     getInfo(new A());
     // 输出female
     getInfo(new B());
+
   ```
 ### in
 * 定义：遍历指定接口的key或遍历联合类型
@@ -235,6 +240,7 @@
     //     readonly name: string;
     // }
     type ReadonlyA = MyReadonly<A>
+
   ``` 
 ### extends
 * 定义：不是类/接口的继承，是类型约束，用于判断一个类型(T)是否可以赋值给另一个类型(K)
@@ -262,6 +268,7 @@
     // Argument of type '{ id: string; }' is not assignable to parameter of type 'A'.
     //   Property 'name' is missing in type '{ id: string; }' but required in type 'A'.
     test(arg3)
+
   ```
 
 ### is
@@ -303,6 +310,7 @@
             }
         }
         example("hello world");
+
     ```
 ### infer
 * 定义：待推断类型，用于类型推断
@@ -351,6 +359,7 @@
   type Partial<T> = {
     [P in keyof T]?: T[P];
     }
+
   ```
 * 使用
   ```
@@ -366,6 +375,7 @@
     //     sex?: 'male' | 'female';
     // }
     type PartialUser = Partial<User>
+
   ```
 
 ### Required<T>
@@ -374,7 +384,8 @@
   ```
   type Required<T> = {
     [P in keyof T]-?: T[P];
-    }   
+    } 
+
   ```
 * 使用
   ```
@@ -399,6 +410,7 @@
   type Readonly<T> = {
     readonly [P in keyof T]: T[P];
     }
+
   ```
 * 使用：
   ```
@@ -414,30 +426,32 @@
     //    readonly sex?: 'male' | 'female';
     // }
     type ReadonlyUser = Readonly<User>
+
   ```  
 ### ReadonlyArray<T>
 * 定义：将`T`类型转换为只读状态`T[]`类型，只能在数组初始化时为变量赋值，之后数组无法修改
 * 实现：
   ```
     interface ReadonlyArray<T> {
-    /** Iterator of values in the array. */
-    [Symbol.iterator](): IterableIterator<T>;
+      /** Iterator of values in the array. */
+      [Symbol.iterator](): IterableIterator<T>;
 
-    /**
-     * Returns an iterable of key, value pairs for every entry in the array
-     */
-    entries(): IterableIterator<[number, T]>;
+      /**
+      * Returns an iterable of key, value pairs for every entry in the array
+      */
+      entries(): IterableIterator<[number, T]>;
 
-    /**
-     * Returns an iterable of keys in the array
-     */
-    keys(): IterableIterator<number>;
+      /**
+      * Returns an iterable of keys in the array
+      */
+      keys(): IterableIterator<number>;
 
-    /**
-     * Returns an iterable of values in the array
-     */
-    values(): IterableIterator<T>;
+      /**
+      * Returns an iterable of values in the array
+      */
+      values(): IterableIterator<T>;
     }
+
   ```
 * 使用：
   ```
@@ -455,6 +469,7 @@
 
     // 会报错：Property 'push' does not exist on type 'readonly Person[]'
     personList.push({ name: 'Lucy' })
+
   ```
 ### Pick<T,K>
 * 定义：从`T`类型中提取部分属性`K`
@@ -463,6 +478,7 @@
   type Pick<T, K extends keyof T> = {
     [P in K]: T[P];
   }
+
   ```
 * 使用
   ```
@@ -477,6 +493,7 @@
     //     age?: number
     // }
     type PickUser = Pick<User,'name'|'age'>
+
   ```
 ### Omit<T, K>
 * 定义：从`T`类型中排除部分属性`K`
@@ -510,6 +527,7 @@
 * 实现：
   ```
   type Extract<T, U> = T extends U ? T : never;
+
   ```
 * 使用
   ```
@@ -542,6 +560,7 @@
 * 实现：
   ```
   type Exclude<T, U> = T extends U ? never : T
+
   ```
 * 使用
   ```
@@ -568,6 +587,7 @@
 
   // 等价于 type ExcludeProps2= 'string'|'number'
   type ExcludeProps2 = Exclude<string | number | (() => void), Function>;  
+
   ```
 ### Record<K, T>
 * 定义：属性映射，即将一个类型`K`的属性映射到另一个类型`T`
@@ -576,6 +596,7 @@
    type Record<K extends string | number | symbol, T> = {
     [P in K]: T;
   }
+
    ```
 * 使用
   ```
@@ -601,6 +622,7 @@
   //     sex: UserB
   // }
   type RecordUser = Record<keyof UserA, UserB>
+
   ```
 
 ### NonNullable<T>
@@ -608,6 +630,7 @@
 * 实现：
   ```
   type NonNullable<T> = T extends null | undefined ? never : T
+
   ```
 * 使用
   ```
@@ -619,6 +642,7 @@
 
   // 等价于 type NonNullable3={name?: string, age: number} | string[]
   type NonNullable3 = NonNullable<{ name?: string, age: number } | string[] | null | undefined>;  
+
   ```
 ### ConstructorParameters<typeof T>
 * 定义：构造函数参数类型，返回 class 中构造函数参数类型组成的`元组类型`
@@ -683,6 +707,7 @@
       age: 20,
       gender: 'man'
   }
+
   ```
 ### ReturnType<T>
 * 定义：函数返回值类型，获取函数的返回值类型
@@ -714,4 +739,5 @@
     type FunctionType = (name: string, age: number) => boolean
     // 等价于 type FunctionParamsType=[name: string, age: number]
     type FunctionParamsType = Parameters<FunctionType>
+    
   ```
