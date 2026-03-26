@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "node is required to sync docs indexes."
+  exit 1
+fi
+
+node scripts/sync-docs.js
+git add docs/README.md docs/_sidebar.md
