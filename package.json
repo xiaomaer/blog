@@ -1,0 +1,19 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Some common problem records",
+  "repository": {
+    "type": "git",
+    "url": "git@github-xiaomaer:xiaomaer/blog.git"
+  },
+  "license": "ISC",
+  "author": "mia",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
