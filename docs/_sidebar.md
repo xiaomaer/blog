@@ -28,8 +28,6 @@
 
 - React
   - [创建 ref 的几种方式](React/创建ref的几种方式.md)
-  - [底层原理学习-diff策略](React/底层原理学习-diff策略.md)
-  - [底层原理学习-Fiber框架](React/底层原理学习-Fiber框架.md)
   - [React input输入汉字时，会触发多次onchange](React/React%20input输入汉字时，会触发多次onchange.md)
   - [react-use 库学习总结](React/react-use库学习总结.md)
 
@@ -45,15 +43,11 @@
   - [修改全局 npmrc 配置指南](工程化/修改全局%20npmrc%20配置指南.md)
   - [docker相关命令](工程化/docker相关命令.md)
   - [Git 合并 commit 与 rebase 指南](工程化/git合并commit和reabse.md)
-  - [lerna monorepo实现组件共享](工程化/lerna%20monorepo实现组件共享.md)
   - [pre-commit 配置与触发指南](工程化/pre-commit%20配置与触发指南.md)
   - [yarn install安装依赖过程](工程化/yarn%20install安装依赖过程.md)
 
 - Eslint
   - [eslint-plugin-prettier vs eslint-config-prettier](Eslint/eslint-plugin-prettier%20vs%20eslint-config-prettier.md)
-
-- VSCode
-  - [一些好用的vscode插件](Vscode/一些好用的插件.md)
 
 - 性能优化
   - [Next.js 项目构建优化](性能优化/next.js项目构建优化.md)

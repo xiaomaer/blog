@@ -10,7 +10,7 @@
 <!-- AUTO-GENERATED-INDEX:START -->
 # 文章索引
 
-> 当前共 38 篇文章，按分类整理如下。
+> 当前共 34 篇文章，按分类整理如下。
 
 ## AI（1）
 
@@ -40,11 +40,9 @@
 - [tsconfig.json 使用说明](TypeScript/tsconfig.json使用说明.md)
 - [typescript高级类型、关键字和工具类型使用](TypeScript/typescript高级类型、关键字和工具类型使用.md)
 
-## React（5）
+## React（3）
 
 - [创建 ref 的几种方式](React/创建ref的几种方式.md)
-- [底层原理学习-diff策略](React/底层原理学习-diff策略.md)
-- [底层原理学习-Fiber框架](React/底层原理学习-Fiber框架.md)
 - [React input输入汉字时，会触发多次onchange](React/React%20input输入汉字时，会触发多次onchange.md)
 - [react-use 库学习总结](React/react-use库学习总结.md)
 
@@ -54,7 +52,7 @@
 - [h5 问题总结-HTML 篇](移动端/h5问题总结-HTML篇.md)
 - [h5 问题总结-JavaScript 篇](移动端/h5问题总结-JS篇.md)
 
-## 工程化（9）
+## 工程化（8）
 
 - [获取 GitHub Personal Access Token](工程化/获取%20GitHub%20Personal%20Access%20Token.md)
 - [基于Docsify和Github Page快速搭建文档网站](工程化/基于Docsify和Github%20Page快速搭建文档网站.md)
@@ -62,17 +60,12 @@
 - [修改全局 npmrc 配置指南](工程化/修改全局%20npmrc%20配置指南.md)
 - [docker相关命令](工程化/docker相关命令.md)
 - [Git 合并 commit 与 rebase 指南](工程化/git合并commit和reabse.md)
-- [lerna monorepo实现组件共享](工程化/lerna%20monorepo实现组件共享.md)
 - [pre-commit 配置与触发指南](工程化/pre-commit%20配置与触发指南.md)
 - [yarn install安装依赖过程](工程化/yarn%20install安装依赖过程.md)
 
 ## Eslint（1）
 
 - [eslint-plugin-prettier vs eslint-config-prettier](Eslint/eslint-plugin-prettier%20vs%20eslint-config-prettier.md)
-
-## VSCode（1）
-
-- [一些好用的vscode插件](Vscode/一些好用的插件.md)
 
 ## 性能优化（1）
 
