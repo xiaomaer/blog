@@ -4,6 +4,10 @@
 
 - AI
   - [前端开发常用 Skills](AI/前端开发常用skills.md)
+  - [AI 辅助开发流程-openspec规范驱动开发](AI/AI%20辅助开发流程-openspec规范驱动开发.md)
+  - [AI 辅助开发流程：Skill（技能）](AI/AI%20辅助开发流程-skill.md)
+  - [AI 辅助开发流程：Superpowers（以 Cursor 为例）](AI/AI%20辅助开发流程-superpowers.md)
+  - [AI 时代前端团队规范（建议版最佳实践）](AI/AI%20时代前端团队规范.md)
 
 - CSS
   - [单行(多行)文本超出显示省略号](CSS/单行(多行)文本超出显示省略号.md)
