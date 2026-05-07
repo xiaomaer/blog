@@ -48,6 +48,7 @@
   - [docker相关命令](工程化/docker相关命令.md)
   - [Git 合并 commit 与 rebase 指南](工程化/git合并commit和reabse.md)
   - [pre-commit 配置与触发指南](工程化/pre-commit%20配置与触发指南.md)
+  - [vitest vs Playwright](工程化/前端项目测试：vitest%20vs%20Playwright.md)
   - [yarn install安装依赖过程](工程化/yarn%20install安装依赖过程.md)
 
 - Eslint

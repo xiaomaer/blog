@@ -10,7 +10,7 @@
 <!-- AUTO-GENERATED-INDEX:START -->
 # 文章索引
 
-> 当前共 40 篇文章，按分类整理如下。
+> 当前共 41 篇文章，按分类整理如下。
 
 ## AI（5）
 
@@ -56,7 +56,7 @@
 - [h5 问题总结-HTML 篇](移动端/h5问题总结-HTML篇.md)
 - [h5 问题总结-JavaScript 篇](移动端/h5问题总结-JS篇.md)
 
-## 工程化（8）
+## 工程化（9）
 
 - [获取 GitHub Personal Access Token](工程化/获取%20GitHub%20Personal%20Access%20Token.md)
 - [基于Docsify和Github Page快速搭建文档网站](工程化/基于Docsify和Github%20Page快速搭建文档网站.md)
@@ -65,6 +65,7 @@
 - [docker相关命令](工程化/docker相关命令.md)
 - [Git 合并 commit 与 rebase 指南](工程化/git合并commit和reabse.md)
 - [pre-commit 配置与触发指南](工程化/pre-commit%20配置与触发指南.md)
+- [vitest vs Playwright](工程化/前端项目测试：vitest%20vs%20Playwright.md)
 - [yarn install安装依赖过程](工程化/yarn%20install安装依赖过程.md)
 
 ## Eslint（1）
