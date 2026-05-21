@@ -8,6 +8,7 @@
   - [AI 辅助开发流程：Skill（技能）](AI/AI%20辅助开发流程-skill.md)
   - [AI 辅助开发流程：Superpowers（以 Cursor 为例）](AI/AI%20辅助开发流程-superpowers.md)
   - [AI 时代前端团队规范（建议版最佳实践）](AI/AI%20时代前端团队规范.md)
+  - [AI辅助开发流程-Harness Engineering vs superpower](AI/AI辅助开发流程-Harness%20Engineering%20vs%20superpower.md)
 
 - CSS
   - [单行(多行)文本超出显示省略号](CSS/单行(多行)文本超出显示省略号.md)
