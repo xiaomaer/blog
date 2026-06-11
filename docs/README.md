@@ -10,11 +10,12 @@
 <!-- AUTO-GENERATED-INDEX:START -->
 # 文章索引
 
-> 当前共 42 篇文章，按分类整理如下。
+> 当前共 43 篇文章，按分类整理如下。
 
-## AI（6）
+## AI（7）
 
 - [前端开发常用 Skills](AI/前端开发常用skills.md)
+- [Agent Browser 在前端工程中的适用场景、接入方式与 E2E 实践](AI/gent%20Browser%20在前端工程中的适用场景、接入方式与%20E2E%20实践.md)
 - [AI 辅助开发流程-openspec规范驱动开发](AI/AI%20辅助开发流程-openspec规范驱动开发.md)
 - [AI 辅助开发流程：Skill（技能）](AI/AI%20辅助开发流程-skill.md)
 - [AI 辅助开发流程：Superpowers（以 Cursor 为例）](AI/AI%20辅助开发流程-superpowers.md)
