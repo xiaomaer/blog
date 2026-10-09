@@ -1,19 +1,19 @@
-These notes cover **Stage One: Concept Mapping and Syntax Translation**. They use **JavaScript and TypeScript as reference points** so experienced frontend developers can transfer existing knowledge without repeating a beginner programming course.
+为你整理的 **阶段一：概念映射与语法“翻译”** 的完整学习资料。这份资料摒弃了面向零基础的繁琐叙述，专门以 **JavaScript/TypeScript 为参照物**，帮你实现知识的无缝迁移。
 
 ---
 
-## 🎯 Core Concepts and Syntax Comparisons
+## 🎯 核心认知转变与语法对照
 
-### 1. Statement Blocks, Scope, and Required Indentation
+### 1. 语句块、作用域与强制缩进
 
-* **JS/TS:** Statement blocks usually use `{}`; `let` and `const` have block scope, while `var` follows different rules. Indentation mainly improves readability.
-* **Python:** **Indentation defines statement blocks; it does not necessarily create a new scope.** Ordinary `if`, `for`, and `while` statements do not introduce an independent local scope; function definitions introduce function-local scope. Four spaces are the usual indentation convention.
-* **Pitfall:** Do not mix tabs and spaces, which can cause `IndentationError`.
+* **JS/TS:** 语句块通常用 `{}` 包围；`let`、`const` 具有块级作用域，`var` 不遵循同样的规则。缩进主要用于可读性。
+* **Python:** **缩进划分语句块，不等于创建新作用域**。普通 `if`、`for`、`while` 不会创建独立的局部作用域；函数定义会引入函数局部作用域。通常使用 4 个空格缩进。
+* **避坑：** 不要混用 Tab 和空格，否则会触发 `IndentationError`。
 
-For example, a variable assigned inside an `if` branch within a function remains accessible later in that function if the branch ran. If it did not run, reading the unbound local variable may raise `UnboundLocalError`. See the [Python execution model](https://docs.python.org/3.14/reference/executionmodel.html) and the closure and binding exercises in [Stage Three](./阶段3:硬核进阶与底层差异.md#22-scope-and-closures-when-variables-are-read).
+例如，在函数内的 `if` 分支中赋值，只要该分支已经执行，之后仍可在同一函数中读取该变量；若分支没有执行，读取尚未绑定的局部变量可能抛出 `UnboundLocalError`。详见 [Python 执行模型](https://docs.python.org/3.14/reference/executionmodel.html)；闭包和变量绑定的练习见[阶段三](./阶段3:硬核进阶与底层差异.md#22-作用域与闭包变量在什么时候被读取)。
 
 ```python
-# Python example
+# Python 示例
 def calculate_discount(price: float) -> float:
     if price > 100:
         final_price = price * 0.9
@@ -22,74 +22,74 @@ def calculate_discount(price: float) -> float:
 
 ```
 
-### 2. Variable Declarations and Hoisting
+### 2. 变量声明与变量提升
 
-* **JS/TS:** `const`, `let`, and `var` have different binding and hoisting behavior.
-* **Python:** **No declaration keyword is required**; assignment creates a binding.
-* **There is no native `const`.** Conventionally, constants use uppercase names, such as `MAX_CONNECTIONS = 10`.
-* Naming conventions: frontend code commonly uses `camelCase`; Python conventionally uses **`snake_case`**.
+* **JS/TS:** 有 `const`、`let`、`var`。严格区分常量和变量，存在变量提升。
+* **Python:** **不需要关键字声明**，直接赋值即创建。
+* **没有原生的 `const**`。通常用全大写字母表示约定俗成的常量（如 `MAX_CONNECTIONS = 10`）。
+* 命名规范：前端习惯 `camelCase`，Python 必须用 **`snake_case`**（下划线命名）。
 
 
 
-### 3. Important Differences in Falsy Values
+### 3. “虚值” (Falsy Values) 的巨大差异
 
-Python conditionals handle empty containers directly because **empty containers are falsy**.
+Python 的条件判断比 JS 更加干净，因为**空容器在 Python 中自带 Falsy 属性**。
 
-| Concept | JavaScript / TypeScript | Python | Key difference |
+| 概念 | JavaScript / TypeScript | Python | 关键差异 |
 | --- | --- | --- | --- |
-| **Missing or empty value** | `null` / `undefined` | `None` | Python uses `None` for the absence of a value. |
-| **Boolean values** | `true` / `false` | `True` / `False` | Python requires the initial **capital letter**. |
-| **Empty array/list** | `[]` is **truthy** in a conditional | `[]` is **falsy** in a conditional | `if ([])` takes the branch in JS; `if []:` does not in Python. |
-| **Empty object/dictionary** | `{}` is **truthy** in a conditional | `{}` is **falsy** in a conditional | Python does not need an equivalent of `Object.keys(obj).length === 0` to check an empty dictionary. |
+| **空/无值** | `null` / `undefined` | `None` | Python 只有一个表示空的值：`None`。 |
+| **布尔值** | `true` / `false` | `True` / `False` | Python 必须**大写首字母**。 |
+| **空数组/列表** | `[]` (处于 if 中为 **Truthy**) | `[]` (处于 if 中为 **Falsy**) | **高危点：** JS 中 `if([])` 成立；Python 中 `if []:` 不成立！ |
+| **空对象/字典** | `{}` (处于 if 中为 **Truthy**) | `{}` (处于 if 中为 **Falsy**) | 同上，Python 不需要像 JS 那样用 `Object.keys(obj).length === 0` 来判断空对象。 |
 
 ---
 
-## ⚡ Translating Core Data Structures
+## ⚡ 核心数据结构“平移翻译”
 
-### 1. Arrays and Lists
+### 1. Array vs List （数组与列表）
 
-Python's `list` corresponds to a JS array; **list comprehensions** provide a concise way to transform and filter values.
+Python 的 `list` 对应 JS 的数组，但配合 **列表推导式 (List Comprehension)**，操作会极度优雅。
 
 ```typescript
-// TypeScript: filter and double
+// TypeScript: 过滤并翻倍
 const nums = [1, 2, 3, 4, 5];
 const doubledEvens = nums.filter(n => n % 2 === 0).map(n => n * 2); 
-// Result: [4, 8]
+// 结果: [4, 8]
 
 ```
 
 ```python
-# Python: list comprehension
+# Python: 列表推导式
 nums = [1, 2, 3, 4, 5]
 doubled_evens = [n * 2 for n in nums if n % 2 == 0]
-# Result: [4, 8]
-# Syntax: [expression for item in iterable if condition]
+# 结果: [4, 8]
+# 语法结构: [返回值 for 迭代对象 if 条件]
 
 ```
 
-### 2. Objects, Maps, and Dictionaries
+### 2. Object/Map vs Dict （对象与字典）
 
-Python's `dict` plays a role similar to a JS object or Map.
+Python 的 `dict` 类似于 JS 的对象或 Map。
 
-* **Pitfall:** Accessing a missing property in JS returns `undefined`. In Python, accessing a missing key with `dict['key']` raises **`KeyError`**.
-* **Suggested approach:** Use `.get()` when a missing key should produce a fallback value.
+* **高危点：** 在 JS 中访问不存在的属性会返回 `undefined`。但在 Python 中，通过 `dict['key']` 访问不存在的键会直接**抛出 `KeyError` 异常崩溃**！
+* **解决方案：** 始终使用 `.get()` 方法。
 
 ```python
 user_info = {"name": "Alex", "role": "admin"}
 
-# Direct lookup raises an error if age is missing.
+# 危险写法（如果 age 不存在会报错）
 # age = user_info["age"] 
 
-# A missing key can return None or an explicit default.
-age = user_info.get("age")          # Returns None
-age = user_info.get("age", 18)      # Returns 18
+# 安全写法（不存在时返回 None，或者设置默认值）
+age = user_info.get("age")          # 返回 None
+age = user_info.get("age", 18)      # 返回 18
 
 ```
 
-### 3. Destructuring and Unpacking
+### 3. 解构赋值与高级展开
 
 ```typescript
-// TypeScript destructuring and spread
+// TypeScript 解构与展开
 const [first, ...rest] = [1, 2, 3, 4];
 const obj1 = { a: 1 };
 const obj2 = { ...obj1, b: 2 };
@@ -97,21 +97,21 @@ const obj2 = { ...obj1, b: 2 };
 ```
 
 ```python
-# Python unpacking with * and **
+# Python 解构与展开 (使用 * 和 **)
 first, *rest = [1, 2, 3, 4]  # first=1, rest=[2, 3, 4]
 
 dict1 = {"a": 1}
-dict2 = {**dict1, "b": 2}    # Merge dictionaries
+dict2 = {**dict1, "b": 2}    # 合并字典
 
 ```
 
 ---
 
-## 🛠️ From TypeScript to Python Type Hints
+## 🛠️ 从 TypeScript 到 Python Type Hints
 
-As an experienced frontend developer, start using **type hints** in your Python code. Modern Python 3.10+ typing has many familiar counterparts in TypeScript.
+既然你是资深前端，写 Python 时请**直接开启强类型模式**。Python 3.10+ 的现代类型系统与 TS 契合度极高。
 
-### Basic Type Comparisons
+### 基础类型对照表
 
 ```typescript
 // TypeScript
@@ -128,19 +128,19 @@ let user: { id: number; name: string } = { id: 1, name: "Tom" };
 username: str = "Tom"
 age: int = 25
 is_ready: bool = True
-scores: list[int] = [90, 85]  # Use built-in lowercase list/dict in modern Python.
+scores: list[int] = [90, 85]  # 3.10+ 直接用原生小写 list/dict
 user: dict[str, int | str] = {"id": 1, "name": "Tom"}
 
 ```
 
-### Advanced Types: Unions, Optional Values, and Aliases
+### 高级类型对照（联合类型、可选、别名）
 
 ```typescript
 // TypeScript
 type ID = string | number;
 interface User {
     id: ID;
-    email?: string; // Optional property
+    email?: string; // 可选属性
 }
 
 ```
@@ -149,31 +149,31 @@ interface User {
 # Python (3.10+)
 from typing import TypeAlias
 
-ID: TypeAlias = str | int  # Type alias
+ID: TypeAlias = str | int  # 类型别名
 
-# For structured data, consider Pydantic models or classes instead of a plain dict.
+# 对于复杂的结构体，Python 不用 dict 表示，而是用 Pydantic 或 Class
 from pydantic import BaseModel
 
 class User(BaseModel):
     id: ID
-    email: str | None = None  # Optional value with a default of None
+    email: str | None = None  # 对应可选属性，赋予默认值 None
 
 ```
 
 ---
 
-## 🔄 Async Programming and Exception Handling
+## 🔄 异步编程与异常处理心智对齐
 
-### 1. Error Handling
+### 1. 异常处理 (Error Handling)
 
-* Python often follows **EAFP**: Easier to Ask for Forgiveness than Permission, handling an operation's exception rather than checking every precondition first.
+* Python 更加倾向于 **EAFP 风格** (Easier to Ask for Forgiveness than Permission —— 抓异常比提前判断好)。
 
 ```typescript
 // TypeScript
 try {
     const data = JSON.parse(rawString);
 } catch (error) {
-    console.error("Parsing failed", error);
+    console.error("解析失败", error);
 }
 
 ```
@@ -185,16 +185,16 @@ import json
 try:
     data = json.loads(raw_string)
 except json.JSONDecodeError as error:
-    print(f"Parsing failed: {error}")
+    print(f"解析失败: {error}")
 
 ```
 
-### 2. Async / Await and the Event Loop
+### 2. Async / Await 与事件循环
 
-Python's `asyncio` library offers a concurrency model with many similarities to JS.
+Python 的 `asyncio` 库提供了与 JS 极其类似的并发心智模型。
 
 ```typescript
-// TypeScript asynchronous concurrency
+// TypeScript 异步并发
 async function fetchData() {
     const [res1, res2] = await Promise.all([
         fetch("/api/1"),
@@ -206,12 +206,12 @@ async function fetchData() {
 ```
 
 ```python
-# Python asynchronous concurrency requires asyncio.
+# Python 异步并发 (需要引入 asyncio)
 import asyncio
 
 async def fetch_data():
-    # Assume get_api is an async function.
-    # asyncio.gather collects concurrent results, similar to Promise.all.
+    # 假设 get_api 是一个 async 异步函数
+    # asyncio.gather 完美对应 Promise.all
     res1, res2 = await asyncio.gather(
         get_api("/api/1"),
         get_api("/api/2")
@@ -222,16 +222,16 @@ async def fetch_data():
 
 ---
 
-## 🚀 Exercise: Write Your First Pythonic Function
+## 🚀 练习任务：完成你的第一段 Pythonic 代码
 
-Create a `test.py` file and translate this familiar frontend **token validation and user information extraction** task into Python:
+在你的电脑上创建一个 `test.py`，尝试把以下前端常见的 **Token 校验与用户信息提取** 逻辑改写为 Python：
 
-> **Requirements:**
-> 1. Write a function that accepts a `user_dict` containing `name`, `role`, and `status`.
-> 2. If `status` is not `"active"`, raise an exception or return a defined error.
-> 3. If the role is `"admin"`, return a tuple containing the user's name and uppercase status.
-> 4. Add **type hints** to every input and output.
+> **业务需求：**
+> 1. 写一个函数接收一个 `user_dict`（包含 `name`, `role`, `status`）。
+> 2. 如果 `status` 不是 `"active"`，抛出异常或返回特定错误。
+> 3. 如果是 `"admin"`，返回一个包含他名字和大写状态的元组。
+> 4. 使用 **Type Hints** 标注所有的输入输出。
 > 
 > 
 
-Completing this exercise gives you a practical checkpoint for the first stage of Python syntax.
+完成这段代码的编写，你的 Python 语法第一关就已经顺利通关了！
