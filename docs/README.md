@@ -10,9 +10,9 @@
 <!-- AUTO-GENERATED-INDEX:START -->
 # 文章索引
 
-> 当前共 43 篇文章，按分类整理如下。
+> 当前共 49 篇文章，按分类整理如下。
 
-## AI（7）
+## AI（8）
 
 - [前端开发常用 Skills](AI/前端开发常用skills.md)
 - [Agent Browser 在前端工程中的适用场景、接入方式与 E2E 实践](AI/gent%20Browser%20在前端工程中的适用场景、接入方式与%20E2E%20实践.md)
@@ -21,6 +21,7 @@
 - [AI 辅助开发流程：Superpowers（以 Cursor 为例）](AI/AI%20辅助开发流程-superpowers.md)
 - [AI 时代前端团队规范（建议版最佳实践）](AI/AI%20时代前端团队规范.md)
 - [AI辅助开发流程-Harness Engineering vs superpower](AI/AI辅助开发流程-Harness%20Engineering%20vs%20superpower.md)
+- [rule（编码规范、安全红线、代码风格）](AI/AI辅助编程-通用规范.md)
 
 ## CSS（8）
 
@@ -87,4 +88,12 @@
 ## 其他（1）
 
 - [如何监听URL变化](其他/如何监听URL变化.md)
+
+## python（5）
+
+- [完美替代 ESLint/Prettier 的配置段](python/阶段2:工程化与生态对齐.md)
+- [资深前端开发学习python的路线图](python/资深前端开发学习python的路线图.md)
+- [Python 现代全栈后端进阶路线图](python/Python%20现代全栈后端进阶路线图.md)
+- [Python example](python/阶段1:资深前端开发学习python的路线图.md)
+- [Stage Three: Advanced Python and Runtime Differences](python/阶段3:硬核进阶与底层差异.md)
 <!-- AUTO-GENERATED-INDEX:END -->

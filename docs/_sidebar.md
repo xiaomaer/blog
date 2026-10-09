@@ -10,6 +10,7 @@
   - [AI 辅助开发流程：Superpowers（以 Cursor 为例）](AI/AI%20辅助开发流程-superpowers.md)
   - [AI 时代前端团队规范（建议版最佳实践）](AI/AI%20时代前端团队规范.md)
   - [AI辅助开发流程-Harness Engineering vs superpower](AI/AI辅助开发流程-Harness%20Engineering%20vs%20superpower.md)
+  - [rule（编码规范、安全红线、代码风格）](AI/AI辅助编程-通用规范.md)
 
 - CSS
   - [单行(多行)文本超出显示省略号](CSS/单行(多行)文本超出显示省略号.md)
@@ -66,3 +67,10 @@
 
 - 其他
   - [如何监听URL变化](其他/如何监听URL变化.md)
+
+- python
+  - [完美替代 ESLint/Prettier 的配置段](python/阶段2:工程化与生态对齐.md)
+  - [资深前端开发学习python的路线图](python/资深前端开发学习python的路线图.md)
+  - [Python 现代全栈后端进阶路线图](python/Python%20现代全栈后端进阶路线图.md)
+  - [Python example](python/阶段1:资深前端开发学习python的路线图.md)
+  - [Stage Three: Advanced Python and Runtime Differences](python/阶段3:硬核进阶与底层差异.md)

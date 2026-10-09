@@ -1,0 +1,29 @@
+[project]
+name = "python-backend-scaffold"
+version = "0.1.0"
+description = ""
+authors = [
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi (>=0.143.0,<0.144.0)",
+    "pydantic (>=2.14.0,<3.0.0)",
+    "uvicorn (>=0.54.0,<0.55.0)"
+]
+
+[tool.poetry]
+packages = [{include = "python_backend_scaffold", from = "src"}]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.16.10,<0.17.0)",
+    "pytest (>=9.1.1,<10.0.0)"
+]
