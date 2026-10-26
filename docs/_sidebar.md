@@ -69,8 +69,10 @@
   - [如何监听URL变化](其他/如何监听URL变化.md)
 
 - python
+  - [阶段三：硬核进阶与底层差异](python/阶段3:硬核进阶与底层差异.md)
+  - [阶段四 · 方向 A：AI 与大模型应用开发](python/阶段4-A-AI与大模型应用开发.md)
+  - [阶段四 · 方向 B：现代 Web 后端开发](python/阶段4-B-现代Web后端开发.md)
   - [完美替代 ESLint/Prettier 的配置段](python/阶段2:工程化与生态对齐.md)
   - [资深前端开发学习python的路线图](python/资深前端开发学习python的路线图.md)
+  - [Python 示例](python/阶段1:资深前端开发学习python的路线图.md)
   - [Python 现代全栈后端进阶路线图](python/Python%20现代全栈后端进阶路线图.md)
-  - [Python example](python/阶段1:资深前端开发学习python的路线图.md)
-  - [Stage Three: Advanced Python and Runtime Differences](python/阶段3:硬核进阶与底层差异.md)
